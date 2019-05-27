@@ -4,7 +4,7 @@
 #'@import dplyr
 #'@export quad
 
-quad <- function(access_token, instance_url, object, field1, field2){
+quad <- function(access_token, instance_url, object, field1, field2, newname){
 
   instance_u <- paste0(instance_url,'/')
   api <- '36.0'
