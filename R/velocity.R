@@ -4,8 +4,8 @@
 #'@import dplyr
 #'@export quad
 
-quad <- function(access_token, instance_url, object, field1, field2, newname){
-  
+quad <- function(access_token, instance_url, object, field1, field2){
+
   instance_u <- paste0(instance_url,'/')
   api <- '36.0'
   myobject <- object
@@ -13,12 +13,12 @@ quad <- function(access_token, instance_url, object, field1, field2, newname){
   session <- c(sessionID = access_token,instanceURL = instance_u, apiVersion = api)
   data1 <- rforcecom.bulkQuery(session, myquery, myobject)
   data1 <- na.omit(data1)
-  
+
   var1 <- data1[,2]
   var2 <- data1[,3]
   var1 <- data_clean(var1) # New variable is created
   var2 <- data_clean(var2)
-  
+
   newdata <- data.frame(Id = data1$Id, var1, var2)
   summary <- newdata %>% group_by(var1, var2) %>%
     summarise(counts = n())
