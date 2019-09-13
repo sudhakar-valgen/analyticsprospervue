@@ -2,7 +2,6 @@
 % Please edit documentation in R/Focus.R, R/ranker.R
 \name{ranks}
 \alias{ranks}
-\alias{ranks}
 \title{Industry ranking}
 \usage{
 ranks(access_token, instance_url, object, depfield, indfield, newname)
