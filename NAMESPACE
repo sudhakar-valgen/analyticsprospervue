@@ -2,6 +2,7 @@
 
 export(Future_recency)
 export(data_clean)
+export(focus)
 export(index)
 export(past_recency)
 export(predictor)

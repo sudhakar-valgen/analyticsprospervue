@@ -5,9 +5,9 @@
 #' @import RForcecom
 #' @import jsonlite
 #' @import dplyr
-#' @export ranks
+#' @export focus
 
-ranks <- function(access_token, instance_url, object, depfield, indfield, newname){
+focus <- function(access_token, instance_url, object, depfield, indfield, newname){
 
   instance_u <- paste0(instance_url,'/')
   api <- '36.0'
