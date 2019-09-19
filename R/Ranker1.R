@@ -5,6 +5,7 @@
 #' @import RForcecom
 #' @import jsonlite
 #' @import dplyr
+
 #' @export ranker1
 
 ranker1 <- function(dataFrame)
