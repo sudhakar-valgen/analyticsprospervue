@@ -6,9 +6,9 @@
 #' @import jsonlite
 #' @import dplyr
 
-#' @export ranker1
+#' @export ranking
 
-ranker1 <- function(dataFrame)
+ranking <- function(dataFrame)
   {
     df <- data1
 

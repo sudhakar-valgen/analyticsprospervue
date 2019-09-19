@@ -17,7 +17,7 @@ ranks <- function(access_token, instance_url, object, depfield, indfield, newnam
   #data <-  read.csv("C:/Users/Sudhakar/Desktop/data/SAMPLE_CITY_AMOUNT1.csv")
   #data1 <- data
   data1 <- na.omit(data1)
-  data1 <- ranker1(data1)
+  data1 <- ranking(data1)
   data1 <- subset(data1, select = c("Id", "decile"))
   data1$decile[data1$decile == 5 | data1$decile == 6 | data1$decile == 7 | data1$decile == 8] <- 5
   data1$decile[data1$decile == 9 | data1$decile == 10 | data1$decile == 11] <- 6
