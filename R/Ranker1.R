@@ -65,7 +65,7 @@ ranking <- function(dataFrame)
               && (str_length(myorder[,3][15])) == (str_length(myorder[,3][20]))
               && (str_length(myorder[,3][25])) == (str_length(myorder[,3][30])) && length(a) >= 10){
       today <- Sys.Date()
-      a <- as.Date(myorder[,3], format = "%m-%d-%Y")
+      a <- as.Date(myorder[,3], format = "%Y-%m-%d")
       #a <- as.POSIXct(myorder[,2], format = "%m-%d-%Y")
       a = as.data.frame(a)
       colnames(a)[1] = "Past_date"
