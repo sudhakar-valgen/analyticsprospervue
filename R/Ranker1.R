@@ -24,7 +24,7 @@ ranking <- function(dataFrame)
 
     } else {
       today <- Sys.Date()
-      myorder[,2] <- as.Date(myorder[,2], format = "%d-%m-%Y")
+      myorder[,2] <- as.Date(myorder[,2], format = "%Y-%m-%d")
       myorder[,2] <- as.numeric(today - myorder[,2])
     }
 
