@@ -3,10 +3,10 @@
 #'This function builds a categorical variable from a numeric variable
 #'@import RForcecom
 #'@import dplyr
-#'@export segment
+#'@export segment1
 
 
-segment <- function(access_token, instance_url, object, field, newname){
+segment1 <- function(access_token, instance_url, object, field, newname){
 
   instance_u <- paste0(instance_url,'/')
   api <- '36.0'
@@ -31,12 +31,7 @@ segment <- function(access_token, instance_url, object, field, newname){
   # Data Treatment starts Here
   data2 <- data1[data1[,2] != 0 & !(is.na(data1[,2])),]
   data3 <- subset(data2, select = c(2))
-  if(is.numeric(data3) == T) {
-    data3 <- slider(data3, 5)
-  } else {
-    data3 <- past_date_recency(data3)
-  }
-
+  data3 <- slider(data3, 5)
   data3 <- cbind(data2, data3) # Derived values are binded to the original data
   data3 <- data3[,-2] # Remove replicate fields
 
