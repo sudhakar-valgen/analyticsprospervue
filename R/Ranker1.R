@@ -69,7 +69,7 @@ ranking <- function(dataFrame)
       #a <- as.POSIXct(myorder[,2], format = "%m-%d-%Y")
       a = as.data.frame(a)
       colnames(a)[1] = "Past_date"
-      a$Past_recency <- today - a$Past_date
+      a$Past_recency <- abs(today - a$Past_date)
 
       ### Substract Max date value by min - 1
       a$Past_recency_min <- a$Past_recency - (min(a$Past_recency, na.rm = T) - 1)
