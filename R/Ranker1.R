@@ -26,6 +26,7 @@ ranking <- function(dataFrame)
       today <- Sys.Date()
       myorder[,2] <- as.Date(myorder[,2], format = "%Y-%m-%d")
       myorder[,2] <- as.numeric(today - myorder[,2])
+      myorder[,2] <- abs(myorder[,2])
     }
 
     # Handling Where to apply prediction?, it has type categorical, numeric and date type
