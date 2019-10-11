@@ -8,9 +8,11 @@
 #' @export past_date_recency
 #'
 
-past_date_recency <- function(var1){
+past_date_recency <- function(data){
+
+  data1 <- na.omit(data)
   today <- Sys.Date()
-  a <- as.Date(var1, format = "%Y-%m-%d")
+  a <- as.Date(data1[,2], format = "%Y-%m-%d")
   #a <- as.POSIXct(myorder[,2], format = "%m-%d-%Y")
   a = as.data.frame(a)
   colnames(a)[1] = "Past_date"
@@ -265,9 +267,11 @@ past_date_recency <- function(var1){
   # } else {
   #   new_data <- rbind(a, missing_data)
   # }
-
-  #data1 <- subset(new_data, select = c("Id", "new_segment"))
-  return(a$newgment)
+  new_data <- cbind(data1, a)
+  data1 <- subset(new_data, select = c("Id", "new_Segment"))
+  return(data1)
 }
+
+#abc <- past_date_recency(data[,c(1,3)])
 
 #new <- past_date_recency(data$ValgenDev__SLAExpirationDate__c)
