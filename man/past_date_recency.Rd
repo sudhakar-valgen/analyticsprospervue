@@ -4,7 +4,7 @@
 \alias{past_date_recency}
 \title{Past Recency}
 \usage{
-past_date_recency(var1)
+past_date_recency(data)
 }
 \description{
 This function will do the past recency of the date variable
