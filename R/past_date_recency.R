@@ -16,6 +16,7 @@ past_date_recency <- function(data){
   #a <- as.POSIXct(myorder[,2], format = "%m-%d-%Y")
   a = as.data.frame(a)
   colnames(a)[1] = "Past_date"
+  # Converting negative values into positive for future recency
   a$Past_recency <- abs(today - a$Past_date)
 
   ### Substract Max date value by min - 1
