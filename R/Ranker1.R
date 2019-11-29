@@ -10,8 +10,8 @@
 
 ranking <- function(dataFrame)
   {
-    df <- data1
-
+    df <- dataFrame
+    #df <- data1
     #Creating a table for use through dplyr
     myorder <-  as.data.frame(df)
 
