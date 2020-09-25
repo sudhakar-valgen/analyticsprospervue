@@ -10,7 +10,7 @@
 
 
 past_date_recency <- function(data, b){
-  data1 <- na.omit(data2)
+  data2 <- na.omit(data)
   today <- Sys.Date()
   if(b == 1){
     a <- as.Date(data2[,2], format = "%m/%d/%Y")
@@ -254,7 +254,7 @@ past_date_recency <- function(data, b){
     }
   }
 
-  new_data <- cbind(data1, a)
+  new_data <- cbind(data2, a)
   data1 <- subset(new_data, select = c("Id", "new_Segment"))
   return(data1)
 }
