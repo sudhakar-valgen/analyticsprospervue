@@ -16,7 +16,7 @@ segment_new <- function(access_token,instance_url,object,field,data_type,newname
 
   data1 <- rforcecom.bulkQuery(session, myquery, myobject)
   #data1 <- na.omit(data1)
-
+  #data1 = data[,c(1,2)]
   # Select Missing values , Add new field and filled with MISSING level
   new_DF <- data1[is.na(data1[,2]),]
   if(nrow(new_DF) > 0){
@@ -31,7 +31,10 @@ segment_new <- function(access_token,instance_url,object,field,data_type,newname
   # Data Treatment starts Here
   data2 <- data1[data1[,2] != 0 & !(is.na(data1[,2])),]
   data3 <- subset(data2, select = c(2))
+  data_type = c("B")
+
   if(data_type == "A") {
+    data3[,1] <- as.numeric(as.character(data3[,1]))
     data3 <- slider(data3, 5)
   } else {
     data3 <- past_date_recency(data3,5)
@@ -49,7 +52,7 @@ segment_new <- function(access_token,instance_url,object,field,data_type,newname
     data3 = rbind(data3, new_DF1)
   }
   data1 <- subset(data3, select = c("Id", "dist"))
-  colnames(data1) <- c("strId", "dist")
+  colnames(data1) <- c("Id", newname)
 
   updater(access_token, instance_url, myobject, data1)
 }
