@@ -31,7 +31,6 @@ segment_new <- function(access_token,instance_url,object,field,data_type,newname
   # Data Treatment starts Here
   data2 <- data1[data1[,2] != 0 & !(is.na(data1[,2])),]
   data3 <- subset(data2, select = c(2))
-  data_type = c("B")
 
   if(data_type == "A") {
     data3[,1] <- as.numeric(as.character(data3[,1]))
