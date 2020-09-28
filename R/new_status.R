@@ -31,7 +31,7 @@ segment_new <- function(access_token,instance_url,object,field,data_type,newname
   # Data Treatment starts Here
   data2 <- data1[data1[,2] != 0 & !(is.na(data1[,2])),]
   data3 <- subset(data2, select = c(2))
-  if(data_type == 0) {
+  if(data_type == "0") {
     data3 <- slider(data3, 5)
   } else {
     data3 <- past_date_recency(data3,5)
