@@ -27,5 +27,4 @@ quad <- function(access_token, instance_url, object, field1, field2, newname){
   newdata <- subset(newdata, select = c('Id', 'Rank'))
   colnames(newdata) <- c("Id", newname)
   updater(access_token, instance_url, myobject, newdata)
-  return(head(newdata))
 }

@@ -56,7 +56,7 @@ slider <- function(var, iter) # 2 inputs; The numeric variable to convert and Nu
 
 data_clean <- function(var){
 
-  if(is.numeric(var) == TRUE){
+  if(grepl("[A-Za-z]", var[1]) == "FALSE"){
 
     if(length(unique(var)) == 2 ) # If numeric data is only 1 or 0, we convert them directly to discreet variable
     {
@@ -66,10 +66,11 @@ data_clean <- function(var){
     }else{
       # If Continuous, we cut the data to 2 levels using percentile
       fdata <- data.frame(var)
+      fdata[,1] <- as.numeric(fdata[,1])
       fdata$dist <- "NA"
       cutoff <- quantile(fdata[[1]], 1/2)
       fdata$dist[fdata[1] <= cutoff] <- paste0("0 to ",cutoff )
-      fdata$dist[fdata[1] > cutoff & fdata[1] <= max(var) ] <- paste0(cutoff," to ", max(var))
+      fdata$dist[fdata[1] > cutoff & fdata[1] <= max(fdata[,1]) ] <- paste0(cutoff," to ", max(fdata[,1]))
       fdata[1] <- NULL
       var <- fdata$dist
       return(as.factor(var))
