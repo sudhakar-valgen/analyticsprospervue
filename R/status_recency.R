@@ -9,8 +9,8 @@
 #'
 
 
-past_date_recency <- function(data, b){
-  data2 <- as.data.frame(data)
+past_date_recency <- function(data5, b){
+  data2 <- as.data.frame(data5)
   today <- Sys.Date()
   if(b == 1){
     a <- as.Date(data2[,1], format = "%m/%d/%Y")
@@ -256,5 +256,6 @@ past_date_recency <- function(data, b){
 
   new_data <- cbind(data2,a[,c(4)])
   colnames(new_data)[2] = "dist"
+
   return(new_data)
 }

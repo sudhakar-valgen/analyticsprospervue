@@ -93,6 +93,7 @@ ranker <- function(dataFrame)
 
   colnames(myorder) <- c('Id', 'quant', 'qual') #Colnames generalized for ease of use
   #myorder <- na.omit(myorder)
+  myorder$quant <- as.numeric(myorder$quant)
   myorder$quant[is.na(myorder$quant)] <- 0# Numeric NAs are considered as 0s
   myorder$qual <- factor(myorder$qual)
   myorder <- myorder %>% arrange(desc(qual))
