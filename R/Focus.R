@@ -16,6 +16,7 @@ focus <- function(access_token, instance_url, object, depfield, indfield, newnam
   data1 <- rforcecom.bulkQuery(session, myquery, object)
   #data <-  read.csv("C:/Users/Sudhakar/Desktop/data/SAMPLE_CITY_AMOUNT1.csv")
   #data1 <- data
+
   data1 <- na.omit(data1)
   data1 <- ranker(data1)
   data1 <- subset(data1, select = c("Id", "decile"))
