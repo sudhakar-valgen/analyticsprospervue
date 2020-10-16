@@ -18,40 +18,50 @@ segment_new <- function(access_token,instance_url,object,field,data_type,newname
   #data1 <- na.omit(data1)
   #data1 = data[,c(1,2)]
   # Select Missing values , Add new field and filled with MISSING level
-  new_DF <- data1[is.na(data1[,2]),]
-  if(nrow(new_DF) > 0){
-    new_DF$dist = "MISSING"
-  }
-
-  # select Zero Values, Add new field and filled with ZERO VALUES level
-  new_DF1 <- data1[data1[,2] == 0 & !(is.na(data1[,2])),]
-  if(nrow(new_DF1) > 0){
-    new_DF1$dist = "ZERO VALUES"
-  }
-  # Data Treatment starts Here
-  data2 <- data1[data1[,2] != 0 & !(is.na(data1[,2])),]
-
-  data3 <- subset(data2, select = c(2))
-  #data_type = "B"
   if(data_type == "A") {
+    new_DF <- data1[is.na(data1[,2]),]
+    if(nrow(new_DF) > 0){
+      new_DF$dist = "MISSING"
+    }
+
+    # select Zero Values, Add new field and filled with ZERO VALUES level
+    new_DF1 <- data1[data1[,2] == 0 & !(is.na(data1[,2])),]
+    if(nrow(new_DF1) > 0){
+      new_DF1$dist = "ZERO VALUES"
+    }
+    # Data Treatment starts Here
+    data2 <- data1[data1[,2] != 0 & !(is.na(data1[,2])),]
+
+    data3 <- subset(data2, select = c(2))
+    #data_type = "B"
+
     data3[,1] <- as.numeric(as.character(data3[,1]))
     data3 <- slider(data3, 5)
+
+    data3 <- cbind(data2, data3) # Derived values are binded to the original data
+    data3 <- data3[,-2] # Remove replicate fields
+
+    # Add missing values and zero values
+    if(nrow(new_DF) > 0){
+      data3 = rbind(data3, new_DF)
+    }
+
+    if(nrow(new_DF1) > 0){
+      data3 = rbind(data3, new_DF1)
+    }
+    data1 <- subset(data3, select = c("Id", "dist"))
+    colnames(data1) <- c("Id", newname)
+    updater(access_token, instance_url, myobject, data1)
   } else {
-    data3 <- past_date_recency(data3,5)
+    data3 <- past_date_recency(data1[,2],5)
+    data3 <- cbind(data1, data3) # Derived values are binded to the original data
+    data3 <- data3[,-2] # Remove replicate fields
+
+    data1 <- subset(data3, select = c("Id", "dist"))
+    colnames(data1) <- c("Id", newname)
+    updater(access_token, instance_url, myobject, data1)
+
   }
 
-  data3 <- cbind(data2, data3) # Derived values are binded to the original data
-  data3 <- data3[,-2] # Remove replicate fields
 
-  # Add missing values and zero values
-  if(nrow(new_DF) > 0){
-    data3 = rbind(data3, new_DF)
-  }
-
-  if(nrow(new_DF1) > 0){
-    data3 = rbind(data3, new_DF1)
-  }
-  data1 <- subset(data3, select = c("Id", "dist"))
-  colnames(data1) <- c("Id", newname)
-  updater(access_token, instance_url, myobject, data1)
 }

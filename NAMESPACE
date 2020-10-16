@@ -2,6 +2,7 @@
 
 export(Future_recency)
 export(data_clean)
+export(date_recency)
 export(focus)
 export(index)
 export(past_date_recency)

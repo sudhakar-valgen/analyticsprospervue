@@ -37,6 +37,8 @@ past_date_recency <- function(data5, b){
 
   ### Substract Max date value by min - 1
   a$Past_recency_min <- a$Past_recency - (min(a$Past_recency, na.rm = T) - 1)
+  a$Past_recency_min <- ifelse(is.na(a$Past_recency_min),max(a$Past_recency_min, na.rm = T)+1, a$Past_recency_min)
+
   max_value <- max(a$Past_recency_min, na.rm = T)
 
   ### Count the missing value in the past recency
