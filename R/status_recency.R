@@ -13,20 +13,20 @@ past_date_recency <- function(data5, b){
   data2 <- as.data.frame(data5)
   today <- Sys.Date()
   if(b == 1){
-    a <- as.Date(data2[,1], format = "%m/%d/%Y")
+    a <- as.Date(data2[,2], format = "%m/%d/%Y")
   } else if(b == 2){
-    a = as.Date(data2[,1], format = "%Y/%m/%d")
+    a = as.Date(data2[,2], format = "%Y/%m/%d")
   }
   else if(b == 3){
-    a = as.Date(data2[,1], format = "%d/%m/%Y")
+    a = as.Date(data2[,2], format = "%d/%m/%Y")
   }
   else if(b == 4){
-    a = as.Date(data2[,1], format = "%d-%m-%Y")
+    a = as.Date(data2[,2], format = "%d-%m-%Y")
   }
   else if(b == 5){
-    a = as.Date(data2[,1], format = "%Y-%m-%d")
+    a = as.Date(data2[,2], format = "%Y-%m-%d")
   } else{
-    a = as.Date(data2[,1], format = "%m-%d-%Y")
+    a = as.Date(data2[,2], format = "%m-%d-%Y")
   }
 
   #a <- as.POSIXct(myorder[,2], format = "%m-%d-%Y")
@@ -46,7 +46,7 @@ past_date_recency <- function(data5, b){
 
   a$Past_recency_min <- as.numeric(a$Past_recency_min)
   missing_data <- a[is.na(a$Past_recency),]
-  a = na.omit(a)
+  #a = na.omit(a)
   zeros_data <-  a[a$Past_recency_min == 0,]
 
   Percentage <- ((nrow(missing_data) + nrow(zeros_data)) / nrow(data)) * 100
@@ -257,7 +257,7 @@ past_date_recency <- function(data5, b){
   }
 
   new_data <- cbind(data2,a[,c(4)])
-  colnames(new_data)[2] = "dist"
+  colnames(new_data)[3] = "dist"
 
   return(new_data)
 }

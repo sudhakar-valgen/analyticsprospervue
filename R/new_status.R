@@ -53,8 +53,8 @@ segment_new <- function(access_token,instance_url,object,field,data_type,newname
     colnames(data1) <- c("Id", newname)
     updater(access_token, instance_url, myobject, data1)
   } else {
-    data3 <- past_date_recency(data1[,2],5)
-    data3 <- cbind(data1, data3) # Derived values are binded to the original data
+    data3 <- past_date_recency(data1,5)
+    data3 <- merge(data1, data3, all.x = T) # Derived values are binded to the original data
     data3 <- data3[,-2] # Remove replicate fields
 
     data1 <- subset(data3, select = c("Id", "dist"))
