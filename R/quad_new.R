@@ -14,8 +14,8 @@ quad_new <- function(access_token, instance_url, object, field1, data_type1,fiel
   data1 <- rforcecom.bulkQuery(session, myquery, myobject)
 
   data1 <- na.omit(data1)
-  data_type1 = "B"
-  data_type2 = "A"
+  # data_type1 = "B"
+  # data_type2 = "A"
   if(data_type1 == "A"){
     var1 <- data1[,2]
   }else{
