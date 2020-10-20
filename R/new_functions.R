@@ -66,6 +66,7 @@ data_clean <- function(var){
     }else{
       # If Continuous, we cut the data to 2 levels using percentile
       fdata <- data.frame(var)
+      #Error Handled
       fdata[,1] <- as.numeric(as.character(fdata[,1]))
       fdata$dist <- "NA"
       cutoff <- quantile(fdata[[1]], 1/2)
