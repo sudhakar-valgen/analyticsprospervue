@@ -56,7 +56,7 @@ slider <- function(var, iter) # 2 inputs; The numeric variable to convert and Nu
 
 data_clean <- function(var){
 
-  if(grepl("[A-Za-z]", var1[1]) == "FALSE"){
+  if(grepl("[A-Za-z]", var[1]) == "FALSE"){
 
     if(length(unique(var)) == 2 ) # If numeric data is only 1 or 0, we convert them directly to discreet variable
     {
