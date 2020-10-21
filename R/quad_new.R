@@ -17,26 +17,26 @@ quad_new <- function(access_token, instance_url, object, field1, data_type1,fiel
   # data_type1 = "B"
   # data_type2 = "A"
   if(data_type1 == "A"){
-    var1 <- data1[,2]
+    var1 <- date_recency(data1[,2],5)
   }else{
     #data3 <- past_date_recency(data1[,2],5)
-    var1 <- date_recency(data1[,2],5)
+    var1 <- data1[,2]
   }
 
   if(data_type2 == "A"){
-    var2 <- data1[,3]
+    var2 <- date_recency(data1[,3],5)
 
   }else{
     #data3 <- past_date_recency(data1[,3],5)
-    var2 <- date_recency(data1[,3],5)
+    var2 <- data1[,3]
 
   }
 
 
   #var1 <- data1[,2]
   #var2 <- data1[,3]
-  var1 <- data_clean(var1) # New variable is created
-  var2 <- data_clean(var2)
+  var1 <- data_clean(var1, data_type1) # New variable is created
+  var2 <- data_clean(var2, data_type2)
 
   newdata <- data.frame(Id = data1$Id, var1, var2)
   summary <- newdata %>% group_by(var1, var2) %>%

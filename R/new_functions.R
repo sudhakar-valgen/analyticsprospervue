@@ -54,10 +54,18 @@ slider <- function(var, iter) # 2 inputs; The numeric variable to convert and Nu
   }
 }
 
-data_clean <- function(var){
+data_clean <- function(var, d){
 
-  if(grepl("[A-Za-z]", var[1]) == "FALSE"){
+  if(d == "C"){
 
+
+    # If categorical, we reduce the number of levels to 2
+    cat_name <- names(table(var)[which.max(table(var))])
+    var <- as.character(var)
+    var[var != cat_name] <- "OTHER"
+    var <- factor(var)
+    return(var)
+  }else{
     if(length(unique(var)) == 2 ) # If numeric data is only 1 or 0, we convert them directly to discreet variable
     {
       var<- as.factor(var)
@@ -76,13 +84,6 @@ data_clean <- function(var){
       var <- fdata$dist
       return(as.factor(var))
     }
-  }else{
-    # If categorical, we reduce the number of levels to 2
-    cat_name <- names(table(var)[which.max(table(var))])
-    var <- as.character(var)
-    var[var != cat_name] <- "OTHER"
-    var <- factor(var)
-    return(var)
   }
 }
 
