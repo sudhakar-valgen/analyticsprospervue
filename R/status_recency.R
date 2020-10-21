@@ -255,9 +255,11 @@ past_date_recency <- function(data5, b){
       }
     }
   }
-
-  new_data <- cbind(data2,a[,c(4)])
-  colnames(new_data)[3] = "dist"
+  a = cbind(data2[,1], a)
+  colnames(a)[1] = "Id"
+  e <- merge(x = data2, y = a, all.x = TRUE)
+  new_data <- e[,c(1,6)]
+  colnames(new_data)[2] = "dist"
 
   return(new_data)
 }
