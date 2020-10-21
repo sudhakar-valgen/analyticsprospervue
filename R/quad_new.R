@@ -16,14 +16,14 @@ quad_new <- function(access_token, instance_url, object, field1, data_type1,fiel
   data1 <- na.omit(data1)
   # data_type1 = "B"
   # data_type2 = "A"
-  if(data_type1 == "A"){
+  if(data_type1 == "B"){
     var1 <- date_recency(data1[,2],5)
   }else{
     #data3 <- past_date_recency(data1[,2],5)
     var1 <- data1[,2]
   }
 
-  if(data_type2 == "A"){
+  if(data_type2 == "B"){
     var2 <- date_recency(data1[,3],5)
 
   }else{
