@@ -149,6 +149,7 @@ index <- function(data1)  # Indexing algorithm; takes in one dataframe with 2 va
   return(index1) # The function returns an indexed table with index values.
 }
 
+
 slider2 <- function(var, iter) # 2 inputs; The numeric variable to convert and Number of cuts
 {
   if(mean(var) > 100000){

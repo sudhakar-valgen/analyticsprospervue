@@ -255,7 +255,7 @@ past_date_recency <- function(data5, b){
       }
     }
   }
-  a = cbind(data2[,1], a)
+  a = cbind.data.frame(data2[,1], a)
   colnames(a)[1] = "Id"
   e <- merge(x = data2, y = a, all.x = TRUE)
   new_data <- e[,c(1,6)]
