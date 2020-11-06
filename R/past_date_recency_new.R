@@ -257,7 +257,7 @@ past_date_recency_new <- function(data5, b){
   }
   a = cbind(data2[,1], a)
   colnames(a)[1] = "Id"
-  new_data <- a[,c(1,6)]
+  new_data <- a[,c(1,5)]
   colnames(new_data)[2] = "dist"
 
   return(new_data)
