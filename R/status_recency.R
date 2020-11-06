@@ -255,10 +255,10 @@ past_date_recency <- function(data5, b){
       }
     }
   }
-  a = cbind.data.frame(data2[,1], a)
+  a = cbind.data.frame(id = data2[,1], new_segment = a[,4])
   colnames(a)[1] = "Id"
-  e <- merge(x = data2, y = a, all.x = TRUE)
-  new_data <- e[,c(1,6)]
+  #e <- merge(x = data2, y = a, all.x = TRUE)
+  new_data <- a
   colnames(new_data)[2] = "dist"
 
   return(new_data)
