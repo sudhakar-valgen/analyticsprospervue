@@ -6,7 +6,7 @@
 #'@export segment_new
 
 
-segment_new <- function(access_token,instance_url,object,field,data_type,newname){
+segment_new <- function(access_token,instance_url,object,field,data_type1,newname){
 
   instance_u <- paste0(instance_url,'/')
   api <- '36.0'
@@ -18,7 +18,7 @@ segment_new <- function(access_token,instance_url,object,field,data_type,newname
   #data1 <- na.omit(data1)
   #data1 = data[,c(1,2)]
   # Select Missing values , Add new field and filled with MISSING level
-  if(data_type == "A") {
+  if(data_type1 == "A") {
     new_DF <- data1[is.na(data1[,2]),]
     if(nrow(new_DF) > 0){
       new_DF$dist = "MISSING"
