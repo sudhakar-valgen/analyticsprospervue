@@ -238,8 +238,8 @@ past_date_recency_old <- function(data5, b){
       }
     }
   }
-  b = as.character(a[,4])
-  new_data <- data.frame( data5,  b)
+  #b = as.character(a[,4])
+  new_data <- cbind( data2,  a[,4])
   #data1 <- new_data[,c(1,5)]
   #return(data1)
   #new_data <- data1
