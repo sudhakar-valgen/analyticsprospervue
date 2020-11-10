@@ -30,12 +30,13 @@ segment_old <- function(access_token,instance_url,object,field,data_type,newname
   data3 <- subset(data2, select = c(2))
   #data_type = c("B")
 
-  if(data_type == "A") {
-    data3[,1] <- as.numeric(as.character(data3[,1]))
-    data3 <- slider(data3, 5)
-  } else {
+  if(data_type == "B") {
     data3 <- past_date_recency_old(data3,5)
     #data3 <- data3[,2]
+  } else {
+
+    data3[,1] <- as.numeric(as.character(data3[,1]))
+    data3 <- slider(data3, 5)
   }
   data3 <- cbind.data.frame(data2, data3) # Derived values are binded to the original data
   data3 <- data3[,-2] # Remove replicate fields
