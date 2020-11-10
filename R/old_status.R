@@ -37,7 +37,7 @@ segment_old <- function(access_token,instance_url,object,field,data_type,newname
     data3 <- past_date_recency_old(data3,5)
     #data3 <- data3[,2]
   }
-  data3 <- cbind(data2, data3) # Derived values are binded to the original data
+  data3 <- cbind.data.frame(data2, data3) # Derived values are binded to the original data
   data3 <- data3[,-2] # Remove replicate fields
   # Add missing values and zero values
   #colnames(data3)[2] = "dist"

@@ -9,7 +9,7 @@
 
 
 past_date_recency_old <- function(data5, b){
-  data2 <- na.omit(data5)
+  data2 <- data5
   data2 <- as.data.frame(data2)
   today <- Sys.Date()
   if(b == 1){
@@ -42,12 +42,15 @@ past_date_recency_old <- function(data5, b){
   a$Past_recency <- abs(today - a$Past_date)
   ### Substract Max date value by min - 1
   a$Past_recency_min <- a$Past_recency - (min(a$Past_recency, na.rm = T) - 1)
+  a$Past_recency_min <- ifelse(is.na(a$Past_recency_min),max(a$Past_recency_min, na.rm = T)+1, a$Past_recency_min)
+
+
   max_value <- max(a$Past_recency_min, na.rm = T)
   ### Count the missing value in the past recency
   #count_missing <- table(is.na(a$Past_recency) == TRUE)
   a$Past_recency_min <- as.numeric(a$Past_recency_min)
   missing_data <- a[is.na(a$Past_recency),]
-  a = na.omit(a)
+  #a = na.omit(a)
   zeros_data <-  a[a$Past_recency_min == 0,]
   Percentage <- ((nrow(missing_data) + nrow(zeros_data)) / nrow(data)) * 100
   for (i in 1:nrow(a)) {
@@ -235,11 +238,11 @@ past_date_recency_old <- function(data5, b){
       }
     }
   }
-
-  new_data <- cbind(data2, a)
-  data1 <- new_data[,c(1,5)]
+  b = as.character(a[,4])
+  new_data <- data.frame( data5,  b)
+  #data1 <- new_data[,c(1,5)]
   #return(data1)
-  new_data <- data1
+  #new_data <- data1
   colnames(new_data)[2] = "dist"
   return(new_data)
 }
