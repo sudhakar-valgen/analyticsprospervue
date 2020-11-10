@@ -42,7 +42,7 @@ past_date_recency_old <- function(data5, b){
   a$Past_recency <- abs(today - a$Past_date)
   ### Substract Max date value by min - 1
   a$Past_recency_min <- a$Past_recency - (min(a$Past_recency, na.rm = T) - 1)
-  a$Past_recency_min <- ifelse(is.na(a$Past_recency_min),max(a$Past_recency_min, na.rm = T)+1, a$Past_recency_min)
+  #a$Past_recency_min <- ifelse(is.na(a$Past_recency_min),max(a$Past_recency_min, na.rm = T)+1, a$Past_recency_min)
 
 
   max_value <- max(a$Past_recency_min, na.rm = T)
@@ -50,7 +50,7 @@ past_date_recency_old <- function(data5, b){
   #count_missing <- table(is.na(a$Past_recency) == TRUE)
   a$Past_recency_min <- as.numeric(a$Past_recency_min)
   missing_data <- a[is.na(a$Past_recency),]
-  #a = na.omit(a)
+  a = na.omit(a)
   zeros_data <-  a[a$Past_recency_min == 0,]
   Percentage <- ((nrow(missing_data) + nrow(zeros_data)) / nrow(data)) * 100
   for (i in 1:nrow(a)) {
