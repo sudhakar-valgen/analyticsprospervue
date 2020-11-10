@@ -8,31 +8,31 @@
 #'
 
 
-past_date_recency_old <- function(data, b){
-  data2 <- na.omit(data)
-  data2 <- as.data.frame(data)
+past_date_recency_old <- function(data5, b){
+  data2 <- na.omit(data5)
+  data2 <- as.data.frame(data2)
   today <- Sys.Date()
   if(b == 1){
     a <- as.Date(data2[,2], format = "%m/%d/%Y")
-    a <- as.Date(data2[,1], format = "%m/%d/%Y")
+    #a <- as.Date(data2[,1], format = "%m/%d/%Y")
   } else if(b == 2){
     a = as.Date(data2[,2], format = "%Y/%m/%d")
-    a = as.Date(data2[,1], format = "%Y/%m/%d")
+    #a = as.Date(data2[,1], format = "%Y/%m/%d")
   }
   else if(b == 3){
     a = as.Date(data2[,2], format = "%d/%m/%Y")
-    a = as.Date(data2[,1], format = "%d/%m/%Y")
+   # a = as.Date(data2[,1], format = "%d/%m/%Y")
   }
   else if(b == 4){
     a = as.Date(data2[,2], format = "%d-%m-%Y")
-    a = as.Date(data2[,1], format = "%d-%m-%Y")
+   # a = as.Date(data2[,1], format = "%d-%m-%Y")
   }
   else if(b == 5){
     a = as.Date(data2[,2], format = "%Y-%m-%d")
-    a = as.Date(data2[,1], format = "%Y-%m-%d")
+    #a = as.Date(data2[,1], format = "%Y-%m-%d")
   } else{
     a = as.Date(data2[,2], format = "%m-%d-%Y")
-    a = as.Date(data2[,1], format = "%m-%d-%Y")
+   # a = as.Date(data2[,1], format = "%m-%d-%Y")
   }
 
   #a <- as.POSIXct(myorder[,2], format = "%m-%d-%Y")
@@ -238,8 +238,8 @@ past_date_recency_old <- function(data, b){
 
   new_data <- cbind(data2, a)
   data1 <- subset(new_data, select = c("Id", "new_Segment"))
-  return(data1)
-  new_data <- cbind(data2,a[,c(4)])
+  #return(data1)
+  new_data <- data1
   colnames(new_data)[2] = "dist"
   return(new_data)
 }
