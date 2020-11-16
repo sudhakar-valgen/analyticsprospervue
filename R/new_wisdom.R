@@ -24,7 +24,7 @@ wisdom <- function(access_token, instance_url, object, numfield,data_type1, catf
   }
 
   if(data_type2 == "B"){
-    data3 <- past_date_recency(data1[,c(1,3)],5)
+    data3 <- past_date_recency_new(data1[,c(1,3)],5)
     data3 <- merge(data1, data3, all.x = T)
     data1[,3] <- data3$dist
   }else{

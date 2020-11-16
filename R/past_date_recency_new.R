@@ -49,8 +49,8 @@ past_date_recency_new <- function(data5, b){
   #a = na.omit(a)
   zeros_data <-  a[a$Past_recency_min == 0,]
 
-  Percentage <- ((nrow(missing_data) + nrow(zeros_data)) / nrow(data)) * 100
-
+  #Percentage <- ((nrow(missing_data) + nrow(zeros_data)) / nrow(data)) * 100
+  Percentage = 5
   for (i in 1:nrow(a)) {
     if(Percentage < 10) {
       b1 = quantile(a$Past_recency_min, c(.15))
