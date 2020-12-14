@@ -7,7 +7,7 @@
 #' @import dplyr
 #' @export ranker_decile
 
-ranker_decile <- function(dataFrame, dynamic, split_)
+ranker_decile <- function(dataFrame, dynamic, split_data)
 {
   df <- dataFrame
 
